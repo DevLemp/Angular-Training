@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,14 +7,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  data: {
+  // @ViewChild('f') form: NgForm;
+  data = {
     email: '',
     type: '',
     password: ''
-  }
+  };
+  submitted = false;
+  defaultOption = '2';
 
-  onSubmit(f: NgForm){
-    
+  onSubmit(form: NgForm){
+    this.submitted = true;
+    this.data.email = form.value.email;
+    this.data.type =form.value.type;
+    this.data.password = form.value.password;
+    console.log(this.data);
   }
 
 }
